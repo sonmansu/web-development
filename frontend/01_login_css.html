@@ -35,6 +35,12 @@
           margin: auto;
           display: block;
         }
+
+        /* 클래스 중첩 개념 */
+        .red-font {
+            color: red;
+            font-size: 36px;
+        }
     </style>
 </head>
 <body>
@@ -46,7 +52,8 @@
         </div>
         <p>ID: <input type="text"/></p>
         <p>PW: <input type="text"/></p>
-        <button class="mybtn">로그인하기</button>
+<!--        버튼에 클래스 두개 멕임 (중첩)-->
+        <button class="mybtn red-font">로그인하기</button>
     </div>
 </body>
 </html>
