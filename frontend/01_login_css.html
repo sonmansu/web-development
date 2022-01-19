@@ -1,10 +1,16 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>로그인페이지</title>
+<!--    폰트 링크 붙여넣음-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&display=swap" rel="stylesheet">
     <style>
+        * { /* 모든 태그에 먹임 */
+            font-family: 'Jua', sans-serif;
+        }
         .mytitle {
             background-color: green; /*div 구역을 명시적으로 확인하기 위해 배경색 깔아주는게 좋음*/
 
@@ -40,7 +46,7 @@
         /* 클래스 중첩 개념 */
         .red-font {
             color: red;
-            font-size: 36px;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -57,57 +63,4 @@
         <button class="mybtn red-font">로그인하기</button>
     </div>
 </body>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>로그인페이지</title>
-    <style>
-        .mytitle {
-            background-color: green; /*div 구역을 명시적으로 확인하기 위해 배경색 깔아주는게 좋음*/
-
-            width: 300px;
-            height: 200px;
-
-            color: white;
-            text-align: center; /*중앙정렬*/
-
-            /* 이미지는 아래 3줄이 항상 같이 다닌다, 아래에서 url만 갈아끼울 것 */
-            background-image: url("https://www.ancient-origins.net/sites/default/files/field/image/Agesilaus-II-cover.jpg");
-            background-size: cover; /* 백그라운드 사이즈를 커버해라..? */
-            background-position: center; /* 가운데에 배치 */
-
-            border-radius: 10px; /* 모서리 둥글게 */
-
-            padding-top: 20px; /* 안쪽 여백 주기 */
-        }
-
-        .wrap {
-          /*background-color: aqua; 임시로 구역 확인용 */
-          width: 300px;
-          margin: auto; /* 양쪽 여백이 동등해짐 */
-        }
-
-        /*버튼을 가운데로 옮기기*/
-        .mybtn {
-          width: 100px;
-          margin: auto;
-          display: block;
-        }
-    </style>
-</head>
-<body>
-    <!--내용물을 가운데 정렬하기 위해 전체 div로 묶어줌. 가운데라는 건 양쪽 여백이 동등하게 최대라는 것 -->
-    <div class="wrap">
-        <div class="mytitle">
-            <h1>로그인 페이지</h1>
-            <h5>아이디, 비밀번호를 입력해주세요</h5>
-        </div>
-        <p>ID: <input type="text"/></p>
-        <p>PW: <input type="text"/></p>
-        <button class="mybtn">로그인하기</button>
-    </div>
-</body>
->>>>>>> 9a42f760612c39ac8f0b3dd5459a7b422d127db5
 </html>
