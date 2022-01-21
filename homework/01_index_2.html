@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <title>부트스트랩 연습하기 2번째 시도</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@300&display=swap" rel="stylesheet">
+    <style>
+        .wrap {
+            width: 500px;
+            margin: auto;
+            font-family: 'Gaegu', cursive;
+        }
+        .image {
+            /*width, height를 안 주면 사진이 안 뜨는 군*/
+            width: 500px;
+            height: 300px;
+
+            background-image: url("https://img9.yna.co.kr/etc/inner/KR/2021/01/21/AKR20210121081500009_01_i_P4.jpg");
+            background-position: center;
+            background-size: cover;
+        }
+        .span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .btn-center {
+            width: 100px;
+            margin: auto;
+            display: block;
+        }
+    </style>
+    <script>
+        function order() {
+            alert('주문 완료!');
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="image"></div>
+        <div class="writing">
+            <h1>캣닢을 팝니다 <span class="span">가격: 3,000원/개</span></h1>
+            <p>고양이는 캣닢을 좋아해 고양이는 캣닢을 좋아해 고양이는 캣닢을 좋아해 고양이는 캣닢을 좋아해</p>
+        </div>
+        <div class="input-box">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">주문자 이름</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">수량</label>
+              </div>
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>--수량을 선택하세요--</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">주소</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">전화번호</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+
+            <button type="button" onclick="order()" class="btn btn-primary btn-center">주문하기</button>
+        </div>
+    </div>
+</body>
+
+</html>

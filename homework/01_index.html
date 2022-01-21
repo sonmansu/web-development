@@ -33,7 +33,10 @@
             width: 450px;
             margin: auto;
         }
-
+        .font-box {
+            margin-top: 10px;
+            font-size: 30px;
+        }
         .form-box {
             width: 450px;
             padding: 0px;
@@ -47,13 +50,20 @@
         }
 
     </style>
+    <script>
+        function orderBtn() {
+            alert('주문이 완료되었습니다.');
+        }
+    </script>
 </head>
 
 <body>
 <div class="wrap">
     <img src="https://image.cnet.co.kr/2018/05/main5.png" width="450px"/>
-    <h1>양초를 팝니다</h1>
-    <div>가격: 3,000원/개</div>
+    <div class="font-box">
+        양초를 팝니다
+        <span style="font-size:15px; font-weight:bold">가격: 3,000원/개</span>
+    </div>
     <p>이 양초는 사실 특별한 힘을 가지고 있어요. 양초를 켜고 소원을 빌면 자자잔 뭐든지 이뤄지게 된답니다. 하나 사가세요! 대나무 향이 아누 좋아요.</p>
     <div class="form-box">
         <div>
@@ -71,7 +81,9 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text">수량</div>
                 </div>
-                <input type="text" class="form-control" placeholder="--수량을 선택하세요--">
+                <select type="" class="form-control" placeholder="--수량을 선택하세요--">
+
+                </select>
             </div>
         </div>
         <div>
@@ -93,7 +105,7 @@
             </div>
         </div>
         <div class="button">
-            <button type="submit" class="btn btn-primary mb-2">주문하기</button>
+            <button type="submit" onclick="orderBtn()" class="btn btn-primary mb-2">주문하기</button>
         </div>
     </div>
 </div>
