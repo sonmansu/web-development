@@ -8,24 +8,19 @@ data = requests.get('https://movie.naver.com/movie/sdb/rank/rmovie.nhn?sel=pnt&d
 
 # HTML을 BeautifulSoup이라는 라이브러리를 활용해 검색하기 용이한 상태로 만듦
 # soup이라는 변수에 "파싱 용이해진 html"이 담긴 상태가 됨
-# 이제 코딩을 통해 필요한 부분을 추출하면 된다.
 soup = BeautifulSoup(data.text, 'html.parser')
-#old_content > table > tbody > tr:nth-child(5)
 # print(soup) # 웹싸이트의 HTML 전체가 그대로 출력됨
 
-## 1개 갖고오기 - select_one 이용
-title = soup.select_one('#old_content > table > tbody > tr:nth-child(2) > td.title > div > a')
-print('1:', title)
-print('2:', title.text) # 태그 사이의 텍스트만 갖고 옴
-print('3:', title['href']) # href 속성 갖고옴
-
-
-#old_content > table > tbody > tr:nth-child(2) > td.title > div > a
-## 여러 개 갖고오기 - select 이용
+# 순위부분 #old_content > table > tbody > tr:nth-child(2) > td:nth-child(1) > img
+# 타이틀부분 #old_content > table > tbody > tr:nth-child(2) > td.title > div > a
+# 평점부분 #old_content > table > tbody > tr:nth-child(2) > td.point
 trs = soup.select('#old_content > table > tbody > tr')
+print(trs)
 for tr in trs:
     a_tag = tr.select_one('td.title > div > a')
     if a_tag is not None:
+        rank = tr.select_one('td:nth-child(1) > img')['alt'] #a_tag가 아니라 tr에서 찾아야함. tr까지는 찾았으니 td부터함.
         title = a_tag.text
-        print(title)
-    # print(tr)
+        star = tr.select_one('td.point').text
+        # print(rank, title, star)
+
