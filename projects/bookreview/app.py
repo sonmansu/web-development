@@ -23,16 +23,15 @@ def write_review():
         'author': author_receive,
         'review': review_receive
     }
-    db.bookreivew.insert_one(doc)
+    db.bookreview.insert_one(doc)
 
     return jsonify({'msg': '저장 완료!'})
 
 
 @app.route('/review', methods=['GET'])
 def read_reviews():
-    sample_receive = request.args.get('sample_give')
-    print(sample_receive)
-    return jsonify({'msg': '이 요청은 GET!'})
+    reviews = list(db.bookreview.find({}, {'_id': False}))  # db에서 전부 갖고옴
+    return jsonify({'all_reviews': reviews})  # 메시지를 내려줄 필요 없으므로 msg는 지움
 
 
 if __name__ == '__main__':

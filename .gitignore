@@ -1,7 +1,4 @@
-/pythonprac/venv/
-/pythonprac/.idea/
-/.idea/
-/projects/prac/venv/
-/projects/prac/.idea/
-/projects/bookreview/.idea/
-/projects/bookreview/venv/
+
+
+**/venv/
+**/.idea/
