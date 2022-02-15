@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <title>2주차 숙제 - 캣타워를 팝니다</title>
+    <!--    폰트-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Nanum Myeongjo', serif;
+        }
+        .wrap {
+            width: 500px;
+            margin: auto;
+        }
+        .img-box {
+            width: 500px;
+            height: 300px;
+            background-image: url("https://file.mk.co.kr/meet/neds/2021/06/image_readtop_2021_535745_16226846584668330.jpg");
+            background-position: center;
+            background-size: cover;
+        }
+        .small-font {
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .blue-font {
+            color: blue;
+        }
+        .btn-order {
+            width: 100px;
+            margin: auto;
+            display: block;
+
+            margin-bottom: 100px;
+        }
+
+    </style>
+
+    <script>
+        $(document).ready(function() {  // 페이지 로딩 후 해야할 것을 작성
+            exchange_rate()
+            show_order()
+        });
+        function show_order() {
+            $.ajax({
+                type: "GET",
+                url: "/order",
+                data: {},
+                success: function (response) {
+                    let orders = response['all_orders']
+                    console.log(orders)
+
+                    for (let i = 0; i < orders.length; i++) {
+                        let name = orders[i]['name']
+                        let quantity = orders[i]['quantity']
+                        let address = orders[i]['address']
+                        let phone = orders[i]['phone']
+
+                        let temp_html=`<tr>
+                                          <td>${name}</td>
+                                          <td>${quantity}</td>
+                                          <td>${address}</td>
+                                          <td>${phone}</td>
+                                        </tr>`
+                        $("#tbody").append(temp_html)
+                    }
+                }
+            })
+        }
+
+        function exchange_rate() {
+            $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/sparta_api/rate",
+                data: {},
+                success: function (response) {
+                    // console.log(response)
+                    let rate = response['rate']
+                    console.log(rate)
+
+                    let temp_html = `달러-원 환율: ${rate}`
+                    console.log(temp_html)
+                    $("#exchange-rate").append(temp_html)
+                    // 윗줄 개선 필요
+                }
+            })
+        }
+        function order() {
+            let name = $("#input_name").val()
+            let quantity = $("#inputGroupSelect01").val()
+            let address = $("#input_address").val()
+            let phone = $("#input_phone").val()
+
+            $.ajax({
+                type: "POST",
+                url: "/order",
+                data: {name_give: name, quantity_give: quantity, address_give: address, phone_give: phone},
+                success: function (response) {
+                    console.log(name, quantity, address, phone)
+                    alert(response['msg'])
+                    window.location.reload()
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div class = 'wrap'>
+        <div class="img-box"></div>
+        <div class="desc-box">
+            <h1>캣타워를 팝니다 <span class="small-font">가격: 3,000원/개</span></h1>
+            <p>이 캣타워는 특별한 힘을 갖고 있습니다. 이 캣타워는 특별한 힘을 갖고 있습니다. 이 캣타워는 특별한 힘을 갖고 있습니다.</p>
+            <p class="blue-font" id="exchange-rate"></p>
+<!--            윗줄 개선 필요-->
+        </div>
+        <div class="input-box">
+            <!--     부트스트랩 input group 탭에서 긁어옴-->
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">주문자이름</span>
+                </div>
+                <input type="text" id='input_name' class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">수량</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                    <option selected>-- 수량을 선택하세요 --</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">주소</span>
+                </div>
+                <input type="text" id = 'input_address' class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">전화번호</span>
+                </div>
+                <input type="text" id='input_phone' class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <button type="button" onclick="order()" class="btn btn-primary btn-order">주문하기</button>
+
+        </div>
+        <div class="order-box">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">이름</th>
+                  <th scope="col">수량</th>
+                  <th scope="col">주소</th>
+                  <th scope="col">전화번호</th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+              </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
